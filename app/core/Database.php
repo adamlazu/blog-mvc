@@ -6,6 +6,7 @@ class Database{
     private $user = DBUSER;
     private $connection;
     private $stmt;
+    private static $instance;
 
     public function __construct(){
         $dsn = 'mysql:host='.$this->host.";dbname=".$this->name;
@@ -15,6 +16,14 @@ class Database{
         }catch(PDOException $e){
             echo $e;
         }
+    }
+
+    public static function getInstance(){
+        if(!isset(self::$instance)){
+            self::$instance = new Database;
+        }
+
+        return self::$instance;
     }
 
     public function query($query){

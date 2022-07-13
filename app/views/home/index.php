@@ -1,5 +1,5 @@
 
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid mt-5">
   <div class="container text-center">
     <h1 class="display-4">Go-Blog</h1>
     <p class="lead">Welcome to go-blog.</p>
