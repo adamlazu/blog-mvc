@@ -5,9 +5,12 @@
     <p class="lead">Welcome to go-blog.</p>
   </div>
   <div class="container">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <?php if(!isset($_SESSION['user'])){ ?>
+      <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Register!
         </button>
+    <?php } ?>
+        <?php Flash::getFlash(); ?>
     </div>
 </div>
   <!-- Modal -->

@@ -35,6 +35,15 @@ class Validation{
                             $this->addErrors("$value sudah dipakai");
                         }
                         break;
+                    case 'isThere':
+                        $this->db->query("SELECT * FROM user WHERE ".$value." = :value");
+                        $this->db->bind('value',$data[$value]);
+                        $this->db->execute();
+                        if($this->db->rowCount()==0){
+                            $this->addErrors("$value Tidak ditemukan");
+                        }
+                        break;
+                    
                 }
             }
         }
