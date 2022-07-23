@@ -21,6 +21,7 @@ class User_model{
         $query = "SELECT password FROM $this->table WHERE username = :user";
         $this->db->query($query);
         $this->db->bind('user',$user);
+        $this->db->execute();
         $hashed = $this->db->single();
         if(password_verify($password,$hashed->password)){
             return true;

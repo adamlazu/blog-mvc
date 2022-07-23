@@ -4,7 +4,7 @@
     <h1 class="display-4">Go-Blog</h1>
     <p class="lead">Welcome to go-blog.</p>
   </div>
-  <div class="container">
+  <div class="container mt-5">
     <?php if(!isset($_SESSION['user'])){ ?>
       <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Register!

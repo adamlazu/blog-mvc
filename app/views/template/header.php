@@ -17,20 +17,23 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="<?php echo BASEURL; ?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo BASEURL; ?>/user/loginpage">Login</a>
+          <a class="nav-link" href="<?php echo BASEURL; ?>/article">Articles</a>
         </li>
+        <?php if(isset($_SESSION['user'])){ ?>
         <li class="nav-item">
-          <a class="nav-link" href="#">Articles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">My Articles</a>
+          <a class="nav-link" href="<?php echo BASEURL; ?>/article/myarticle">My Articles</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo BASEURL; ?>/user/logout">Logout</a>
         </li>
+        <?php }else{?>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo BASEURL; ?>/user/loginpage">Login</a>
+        </li>
+        <?php } ?>
       </ul>
     </div>
   </div>
