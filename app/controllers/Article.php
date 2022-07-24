@@ -51,14 +51,48 @@ class Article extends Controller{
         $this->view('template/footer');
     }
 
+    public function edit($id){
+        $data['article']= $this->model('Article_model')->getArticlebyid((int)$id);
+        $data['title']='edit article';
+        $this->view('template/header',$data);
+        $this->view('article/edit',$data);
+        $this->view('template/footer');
+    }
+
+    public function delete($id){
+
+    }
+
     public function myarticle(){
-        $data['title'] = 's articles';
+        $data['title'] = $_SESSION['user']'s articles';
         $data['articles'] = $this->model('Article_model')->getArticlebyauthor($_SESSION['user']);
         $data['total']= $this->model('Article_model')->total('user',$_SESSION['user']);
         $data['pages']= ceil($data['total']/5);
         $this->view('template/header',$data);
         $this->view('article/myarticle',$data);
         $this->view('template/footer');
+    }
+
+    public function update($id){
+        $validation = $this->model('Validation');
+        $terms = array('title'=>array(
+            'required'=>true,
+            'max'=>100
+        ),'tag'=>array(
+            'required'=>true,
+            'max'=>20
+        ),'content' => array(
+            'required'=>true
+        ));
+        if($validation->check($_POST,$terms)->passed()){
+            if($this->model('Article_model')->updateArticle($id)>0){
+
+            }else{
+
+            }
+        }else{
+            
+        }
     }
 }
 

@@ -19,8 +19,16 @@
                             <h3><?php echo $article->title; ?></h3>
                             <h5><?php echo $article->author; ?></h5>
                         </div>
-                        <div class="button mt-3">
-                            <a type="button" class="btn btn-primary" href="<?php echo BASEURL; ?>/article/read/<?php echo $article->id ?>">Read More</a>
+                        <div class="fiture-button d-flex">
+                            <div class="button mt-3 mx-1">
+                                <a type="button" class="btn btn-primary" href="<?php echo BASEURL; ?>/article/read/<?php echo $article->id ?>">Read More</a>
+                            </div>
+                            <div class="button mt-3 mx-1">
+                                <a type="button" class="btn btn-warning" href="<?php echo BASEURL; ?>/article/edit/<?php echo $article->id ?>">edit</a>
+                            </div>
+                            <div class="button mt-3 mx-1">
+                                <a type="button" class="btn btn-danger" href="<?php echo BASEURL; ?>/article/delete/<?php echo $article->id ?>">delete</a>
+                            </div>
                         </div>
                     </div>
                 </div>
