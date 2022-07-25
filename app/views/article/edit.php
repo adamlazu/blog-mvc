@@ -2,7 +2,7 @@
     <h2 class="text-center my-3">edit article.</h2>
     <div class="row">
         <div class="col-md-8">
-            <form action="<?php echo BASEURL; ?>/article/update" method="post">
+            <form action="<?php echo BASEURL; ?>/article/update/<?php echo $data['article']->id; ?>" method="post">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Title" aria-label="Username" aria-describedby="basic-addon1" name="title" value="<?php echo $data['article']->title; ?>">
                 </div>

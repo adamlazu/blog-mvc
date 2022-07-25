@@ -49,6 +49,25 @@ class Article_model{
 
     }
 
+    public function updateArticle($data,$id){
+        $query = "UPDATE $this->table SET title = :title, content = :content, tag = :tag  WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('title',$data['title']);
+        $this->db->bind('tag',$data['tag']);
+        $this->db->bind('content',$data['content']);
+        $this->db->bind('id',$id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function deleteArticle($id){
+        $query = "DELETE FROM $this->table WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('id',$id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     public function total($param,$user = NULL){
         if($param == 'all'){
             $query = "SELECT * FROM $this->table ";

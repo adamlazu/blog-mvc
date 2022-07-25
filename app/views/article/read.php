@@ -1,6 +1,7 @@
 <div class="container">
     <h1><?php echo $data['article']->title ?></h1>
-    <p>
+    
+    <textarea rows = "50" cols="150">
         <?php echo $data['article']->content ?>
-    </p>
+    </textarea>
 </div>

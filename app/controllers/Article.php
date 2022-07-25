@@ -60,11 +60,17 @@ class Article extends Controller{
     }
 
     public function delete($id){
-
+        if($this->model('Article_model')->deleteArticle((int)$id)>0){
+            Flash::setFlash("Article has successfully deleted","success");
+            header('Location: '.BASEURL.'/article/myarticle');
+        }else{
+            Flash::setFlash("Article failed to delete","danger");
+            header('Location: '.BASEURL.'/myarticle');
+        }
     }
 
     public function myarticle(){
-        $data['title'] = $_SESSION['user']'s articles';
+        $data['title'] = $_SESSION['user']."'s articles";
         $data['articles'] = $this->model('Article_model')->getArticlebyauthor($_SESSION['user']);
         $data['total']= $this->model('Article_model')->total('user',$_SESSION['user']);
         $data['pages']= ceil($data['total']/5);
@@ -85,13 +91,16 @@ class Article extends Controller{
             'required'=>true
         ));
         if($validation->check($_POST,$terms)->passed()){
-            if($this->model('Article_model')->updateArticle($id)>0){
-
+            if($this->model('Article_model')->updateArticle($_POST,(int)$id)>0){
+                Flash::setFlash("Article has successfully updated","success");
+                header('Location: '.BASEURL.'/article/myarticle');
             }else{
-
+                Flash::setFlash("Article failed to update","danger");
+                header('Location: '.BASEURL.'/myarticle');
             }
         }else{
-            
+            Flash::setFlash($validation->getErrors(),"danger");
+            header('Location: '.BASEURL.'/myarticle');
         }
     }
 }
